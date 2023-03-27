@@ -13,7 +13,7 @@ function Body() {
   return (
     <>
       <div className="my-2">
-        <Button variant="primary" onClick={handleShow} className="my-2">
+        <Button variant="info" onClick={handleShow} className="my-2">
           Search
         </Button>
       </div>

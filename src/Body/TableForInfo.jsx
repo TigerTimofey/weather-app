@@ -1,5 +1,6 @@
-// import React from "react";
-import Table from "react-bootstrap/Table";
+import ShortTable from "./ShortTable";
+import DetailTable from "./DetailTable";
+
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
@@ -12,94 +13,10 @@ function TableForInfo() {
       justify
     >
       <Tab eventKey="home" title="Shortly">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Current</th>
-              <th>Forecast</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr></tr>
-          </tbody>
-        </Table>
+        <ShortTable />
       </Tab>
       <Tab eventKey="profile" title="Detail">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Current</th>
-              <th>Forecast</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr></tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr></tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr></tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr></tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr></tr>
-          </tbody>
-        </Table>
+        <DetailTable />
       </Tab>
     </Tabs>
   );

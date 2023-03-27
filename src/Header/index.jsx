@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 function Header() {
   return (
-    <Navbar bg="light" variant="light" expand="sm">
+    <Navbar bg="white" variant="light" expand="sm">
       <Container>
         <Navbar.Brand href="#home">
           <img
