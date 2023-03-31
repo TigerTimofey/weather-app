@@ -2,9 +2,10 @@ import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Data from "./Data";
+
 import "./Body.scss";
 import SideBar from "./Sidebar";
+import WeatherPeriods from "./WeatherPeriods";
 
 function Body() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -20,7 +21,7 @@ function Body() {
 
       <Row>
         <Col md={4}>
-          <Data />
+          <WeatherPeriods />
         </Col>
 
         <Col md={8}>

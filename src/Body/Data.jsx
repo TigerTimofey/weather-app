@@ -1,7 +1,26 @@
-import TableForInfo from "./TableForInfo";
+import Table from "react-bootstrap/Table";
 
 function Data() {
-  return <TableForInfo />;
+  return (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Current</th>
+          <th>Forecast</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+        </tr>
+        <tr>
+          <td>Jacob</td>
+          <td>Thornton</td>
+        </tr>
+      </tbody>
+    </Table>
+  );
 }
 
 export default Data;
