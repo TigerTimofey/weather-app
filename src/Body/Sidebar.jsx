@@ -1,5 +1,6 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
 import SearchForm from "./SearchForm";
+
 import GetDataType from "./GetDataType";
 
 function SideBar({ show, handleClose }) {

@@ -38,7 +38,7 @@ function SearchForm() {
   return (
     <Form onSubmit={handleSumbit}>
       <Form.Group className="mb-3">
-        <Form.Label>Latitude </Form.Label>
+        <Form.Label>Latitude</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter latitude"

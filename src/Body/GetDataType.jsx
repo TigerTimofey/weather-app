@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { FormGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const GetDataType = () => {
   const [dataTypeValue, setDataTypeValue] = useState(null);
@@ -7,34 +9,36 @@ const GetDataType = () => {
   const handleChange = (event) => {
     setDataTypeValue(event.target.value);
   };
-
+  const modes = ["xml", "html", "json"];
   return (
-    <div className="mt-5 text-center">
-      {<h4>Choose Data Type</h4>}
-      <select onChange={handleChange}>
-        <option value="">Select an option</option>
-        <option value="xml">xml</option>
-        <option value="html">html</option>
-        <option value="json">json</option>
-      </select>
-      {<p>You selected: {dataTypeValue}</p>}
+    <Form onSubmit={handleChange}>
+      <FormGroup className="mb-3">
+        <Form.Label> {"Choose Data Type"}</Form.Label>
 
-      <div className="d-grid">
-        <Button
-          onClick={() => {
-            window.open(
-              `https://api.openweathermap.org/data/2.5/weather?lat=59.44&lon=24.75&mode=${dataTypeValue}&appid=75dabd7495f2bcb270e12f2e536e0683`,
-              "_blank"
-            );
-          }}
-          variant="primary"
-          type="submit"
-        >
-          {" "}
-          Submit{" "}
-        </Button>{" "}
-      </div>
-    </div>
+        <Form.Select onChange={handleChange}>
+          {modes.map((mode) => (
+            <option value={mode} key={mode}>
+              {mode}
+            </option>
+          ))}
+        </Form.Select>
+        <div className="d-grid">
+          <Button
+            onClick={() => {
+              window.open(
+                `https://api.openweathermap.org/data/2.5/weather?lat=59.44&lon=24.75&mode=${dataTypeValue}&appid=75dabd7495f2bcb270e12f2e536e0683`,
+                "_blank"
+              );
+            }}
+            variant="primary"
+            type="submit"
+          >
+            {" "}
+            Export{" "}
+          </Button>{" "}
+        </div>
+      </FormGroup>
+    </Form>
   );
 };
 
