@@ -4,7 +4,7 @@ import Data from "./Data";
 
 function WeatherPeriods() {
   return (
-    <Tabs defaultActiveKey="current" className="mb-3" fill>
+    <Tabs defaultActiveKey="current" className="mb-3" justify>
       <Tab eventKey="current" title="Current Weather">
         <Data />
       </Tab>
