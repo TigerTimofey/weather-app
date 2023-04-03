@@ -26,8 +26,7 @@ const GetDataType = () => {
           <Button
             onClick={() => {
               window.open(
-                `https://api.openweathermap.org/data/2.5/weather?lat=59.44&lon=24.75&mode=${dataTypeValue}&appid=75dabd7495f2bcb270e12f2e536e0683`,
-                "_blank"
+                `https://api.openweathermap.org/data/2.5/weather?lat=59.44&lon=24.75&mode=${dataTypeValue}&appid=75dabd7495f2bcb270e12f2e536e0683`
               );
             }}
             variant="primary"

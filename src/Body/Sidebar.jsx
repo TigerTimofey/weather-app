@@ -1,7 +1,7 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
 import SearchForm from "./SearchForm";
 
-import GetDataType from "./GetDataType";
+import ExportForm from "./ExportForm";
 
 function SideBar({ show, handleClose }) {
   return (
@@ -11,7 +11,7 @@ function SideBar({ show, handleClose }) {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <SearchForm />
-        <GetDataType />
+        <ExportForm />
       </Offcanvas.Body>
     </Offcanvas>
   );
