@@ -1,3 +1,4 @@
+import { getCurrentWeather, defaultParams } from "../services/apiService";
 import { FormGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -17,23 +18,17 @@ function SearchForm() {
     { lavel: "Vietnamese", code: "vi" },
   ];
 
-  const defaultValue = {
-    latitude: "59.4370",
-    longitude: "24.7536",
-    mode: "json",
-    unit: "standard",
-  };
-
-  const handleSumbit = (event) => {
+  const handleSumbit = async (event) => {
     event.preventDefault(); // stop Data move when is clicked
     const data = {
       lat: event.target.latitude.value,
-      lot: event.target.longitude.value,
+      lon: event.target.longitude.value,
       mode: event.target.mode.value,
-      unit: event.target.unit.value,
+      units: event.target.unit.value,
       lang: event.target.language.value,
     };
-    console.log(data);
+    const currentWeather = await getCurrentWeather(data);
+    console.log("currentWeather", currentWeather);
   };
   return (
     <Form onSubmit={handleSumbit}>
@@ -43,7 +38,7 @@ function SearchForm() {
           type="text"
           placeholder="Enter latitude"
           name="latitude"
-          defaultValue={defaultValue.latitude}
+          defaultValue={defaultParams.lat}
         />
         <Form.Text className="text-muted">Example: 59.4370</Form.Text>
       </Form.Group>
@@ -54,7 +49,7 @@ function SearchForm() {
           type="text"
           placeholder="Enter longitude"
           name="longitude"
-          defaultValue={defaultValue.longitude}
+          defaultValue={defaultParams.lon}
         />
         <Form.Text className="text-muted">Example: 24.7536</Form.Text>
       </Form.Group>
@@ -70,7 +65,8 @@ function SearchForm() {
                 key={mode}
                 name="mode"
                 value={mode}
-                defaultChecked={mode === defaultValue.mode}
+                defaultChecked={mode === defaultParams.mode}
+                disabled
               />
             ))}
             <Form.Text className="text-muted">Data type</Form.Text>
@@ -86,7 +82,7 @@ function SearchForm() {
                 key={unit}
                 name="unit"
                 value={unit}
-                defaultChecked={unit === defaultValue.unit}
+                defaultChecked={unit === defaultParams.units}
               />
             ))}
             <Form.Text className="text-muted">Measurement type</Form.Text>
