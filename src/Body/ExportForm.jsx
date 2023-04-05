@@ -7,7 +7,7 @@ function ExportForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(event.target.mode.value);
-    const link = await linkGenerator();
+    const link = await linkGenerator(event.target.mode.value);
     window.open(link);
   };
   return (

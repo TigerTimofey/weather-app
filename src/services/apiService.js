@@ -5,7 +5,7 @@ const apiUrl = "https://api.openweathermap.org/data/2.5";
 export const defaultParams = {
   lat: "59.4370",
   lon: "24.7536",
-  mode: "json",
+  // mode: "json",
   units: "standard",
 };
 
@@ -19,9 +19,10 @@ export const getCurrentWeather = async (params) => {
   return await response.json(); // make js object
 };
 
-export const linkGenerator = async () => {
+export const linkGenerator = async (theData) => {
   const linkParams = new URLSearchParams({
     appid: apiKey,
+    mode: theData,
     ...defaultParams,
   });
   const answer = await fetch(`${apiUrl}/weather?${linkParams}`);
