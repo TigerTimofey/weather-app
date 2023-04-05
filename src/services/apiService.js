@@ -18,3 +18,12 @@ export const getCurrentWeather = async (params) => {
 
   return await response.json(); // make js object
 };
+
+export const linkGenerator = async () => {
+  const linkParams = new URLSearchParams({
+    appid: apiKey,
+    ...defaultParams,
+  });
+  const answer = await fetch(`${apiUrl}/weather?${linkParams}`);
+  return answer.url;
+};

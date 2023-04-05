@@ -1,13 +1,14 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { linkGenerator } from "../services/apiService";
 
 function ExportForm() {
   const modes = ["xml", "html", "json"];
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(event.target.mode.value);
-    window.open("_blank");
+    const link = await linkGenerator();
+    window.open(link);
   };
   return (
     <Form onSubmit={handleSubmit}>
