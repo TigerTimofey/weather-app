@@ -5,26 +5,31 @@ const apiUrl = "https://api.openweathermap.org/data/2.5";
 export const defaultParams = {
   lat: "59.4370",
   lon: "24.7536",
-  // mode: "json",
+  mode: "json",
   units: "standard",
 };
 
 export const getCurrentWeather = async (params) => {
-  const searchParams = new URLSearchParams({
-    appid: apiKey,
-    ...(params || defaultParams),
-  });
-  const response = await fetch(`${apiUrl}/weather?${searchParams}`);
-
+  const link = gererateFetchUrl(params);
+  const response = await fetch(link);
   return await response.json(); // make js object
 };
 
-export const linkGenerator = async (theData) => {
-  const linkParams = new URLSearchParams({
+export const gererateFetchUrl = (params) => {
+  const searchParams = new URLSearchParams({
     appid: apiKey,
-    mode: theData,
     ...defaultParams,
+    ...params,
   });
-  const answer = await fetch(`${apiUrl}/weather?${linkParams}`);
-  return answer.url;
+  return `${apiUrl}/weather?${searchParams}`;
 };
+
+// export const linkGenerator = async (theData) => {
+//   const linkParams = new URLSearchParams({
+//     appid: apiKey,
+//     mode: theData,
+//     ...defaultParams,
+//   });
+//   const answer = await fetch(`${apiUrl}/weather?${linkParams}`);
+//   return answer.url;
+// };
