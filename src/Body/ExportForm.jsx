@@ -1,14 +1,21 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { linkGenerator } from "../services/apiService";
+// import { linkGenerator } from "../services/apiService";
+import { gererateFetchUrl } from "../services/apiService";
 
 function ExportForm() {
   const modes = ["xml", "html", "json"];
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.target.mode.value);
-    const link = await linkGenerator(event.target.mode.value);
-    window.open(link);
+
+    const mode = event.target.mode.value;
+    const url = gererateFetchUrl({
+      mode,
+    });
+    window.open(url);
+
+    // const link = await linkGenerator(event.target.mode.value);
+    // window.open(link);
   };
   return (
     <Form onSubmit={handleSubmit}>

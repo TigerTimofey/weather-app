@@ -1,22 +1,25 @@
 import Table from "react-bootstrap/Table";
 
-function Data() {
+function Data(props) {
+  console.log(props);
   return (
     <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Current</th>
-          <th>Forecast</th>
-        </tr>
-      </thead>
       <tbody>
         <tr>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>City</td>
+          <td>{props.city?.name || props.name}</td>
         </tr>
         <tr>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <td>Temp</td>
+          <td>{props.main?.temp}</td>
+        </tr>
+        <tr>
+          <td>Feels like</td>
+          <td>{props.main?.feels_like}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{props.weather?.length && props.weather[0].description}</td>
         </tr>
       </tbody>
     </Table>

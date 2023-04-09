@@ -4,10 +4,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const GetDataType = () => {
-  const [dataTypeValue, setDataTypeValue] = useState(null);
-
+  const [forecastWeather, setForecastWeather] = useState(null);
   const handleChange = (event) => {
-    setDataTypeValue(event.target.value);
+    setForecastWeather(event.target.value);
   };
   const modes = ["xml", "html", "json"];
   return (
