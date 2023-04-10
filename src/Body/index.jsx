@@ -13,6 +13,7 @@ function Body() {
   const [showSideBar, setShowSideBar] = useState(false);
   const [currentWeather, setCurrentweather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
+
   const handleShow = () => setShowSideBar(true);
   // useEffect to make one time
   useEffect(() => {
@@ -36,10 +37,7 @@ function Body() {
 
       <Row>
         <Col md={4}>
-          <WeatherPeriods
-            currentWeather={currentWeather}
-            forecastWeather={forecastWeather}
-          />
+          <WeatherPeriods currentWeather={currentWeather} />
         </Col>
 
         <Col md={8}>
