@@ -37,14 +37,22 @@ function Body() {
 
       <Row>
         <Col md={4}>
-          <WeatherPeriods currentWeather={currentWeather} />
+          <WeatherPeriods
+            currentWeather={currentWeather}
+            forecastWeather={forecastWeather}
+          />
         </Col>
 
         <Col md={8}>
           <div className="map-example"></div>
         </Col>
       </Row>
-      <SideBar show={showSideBar} handleClose={() => setShowSideBar(false)} />
+      <SideBar
+        setCurrentweather={setCurrentweather}
+        setForecastWeather={setForecastWeather}
+        show={showSideBar}
+        handleClose={() => setShowSideBar(false)}
+      />
     </>
   );
 }
