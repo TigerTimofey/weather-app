@@ -7,12 +7,17 @@ import "./Body.scss";
 import SideBar from "./Sidebar";
 import WeatherPeriods from "./WeatherPeriods";
 import { getCurrentWeather, getForecastWeather } from "../services/apiService";
+import ErrorMadal from "./ErrorMadal";
 
 function Body() {
   // console.log("api key", process.env);
   const [showSideBar, setShowSideBar] = useState(false);
   const [currentWeather, setCurrentweather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const handleCloseModal = () => setShow(false);
+  const handleShowModal = () => setShow(true);
 
   const handleShow = () => setShowSideBar(true);
   // useEffect to make one time
@@ -27,14 +32,22 @@ function Body() {
     });
   }, []);
   // console.log(currentWeather);
+
   return (
     <>
       <div className="my-2">
         <Button variant="info" onClick={handleShow} className="my-2">
           Search
         </Button>
+        <Button variant="danger" onClick={handleShowModal}>
+          ErrorMadal
+        </Button>
       </div>
-
+      <ErrorMadal
+        show={show}
+        handleCloseModal={handleCloseModal}
+        handleShowModal={handleShowModal}
+      />
       <Row>
         <Col md={4}>
           <WeatherPeriods
@@ -47,6 +60,7 @@ function Body() {
           <div className="map-example"></div>
         </Col>
       </Row>
+
       <SideBar
         setCurrentweather={setCurrentweather}
         setForecastWeather={setForecastWeather}

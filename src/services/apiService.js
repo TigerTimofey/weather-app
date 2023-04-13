@@ -11,7 +11,7 @@ export const defaultParams = {
 
 export const gererateFetchUrl = (params, endPoint = "weather") => {
   const searchParams = new URLSearchParams({
-    // appid: apiKey,
+    appid: apiKey,
     ...defaultParams,
     ...params,
   });
