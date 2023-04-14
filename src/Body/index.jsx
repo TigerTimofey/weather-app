@@ -8,34 +8,34 @@ import SideBar from "./Sidebar";
 import WeatherPeriods from "./WeatherPeriods";
 import { getCurrentWeather, getForecastWeather } from "../services/apiService";
 import ErrorMadal from "../ErrorMadal";
+import Map from "./Map";
 
 function Body() {
   // console.log("api key", process.env);
   const [showSideBar, setShowSideBar] = useState(false);
   const [currentWeather, setCurrentweather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
-  const [showErrorModel, setShowErrorModel] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
   // useEffect to make one time
   useEffect(() => {
-    getCurrentWeather().then((weather) => {
-      setCurrentweather(weather);
-      console.log("weather", weather);
-    });
-    getForecastWeather().then((forecast) => {
-      setForecastWeather(forecast);
-      console.log("forecast", forecast);
-    });
+    getCurrentWeather()
+      .then((weather) => {
+        setCurrentweather(weather);
+      })
+      .catch((errorMessage) => setErrorMessage(errorMessage));
+    getForecastWeather()
+      .then((forecast) => {
+        setForecastWeather(forecast);
+      })
+      .catch((errorMessage) => setErrorMessage(errorMessage));
   }, []);
   // console.log(currentWeather);
 
   return (
     <>
       <div className="my-2">
-        <Button variant="danger" onClick={() => setShowErrorModel(true)}>
-          Show ErrorMadal
-        </Button>
         <Button variant="info" onClick={handleShow} className="my-2">
           Search
         </Button>
@@ -50,7 +50,7 @@ function Body() {
         </Col>
 
         <Col md={8}>
-          <div className="map-example"></div>
+          <Map {...currentWeather} />
         </Col>
       </Row>
 
@@ -61,8 +61,8 @@ function Body() {
         handleClose={() => setShowSideBar(false)}
       />
       <ErrorMadal
-        show={showErrorModel}
-        handleCloseModal={() => setShowErrorModel(false)}
+        handleCloseModal={() => setErrorMessage(null)}
+        message={errorMessage}
       />
     </>
   );

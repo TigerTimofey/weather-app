@@ -1,19 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function ErrorMadal({ show, handleCloseModal }) {
+function ErrorMadal({ handleCloseModal, message }) {
   return (
-    <Modal show={show} onHide={handleCloseModal}>
+    <Modal show={!!message} onHide={handleCloseModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal Error</Modal.Title>
+        <Modal.Title>Error</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Body>{message}</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleCloseModal}>
           Close
-        </Button>
-        <Button variant="primary" onClick={handleCloseModal}>
-          Confirm
         </Button>
       </Modal.Footer>
     </Modal>
