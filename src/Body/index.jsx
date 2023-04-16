@@ -23,11 +23,14 @@ function Body() {
     getCurrentWeather()
       .then((weather) => {
         setCurrentweather(weather);
+        console.log("weather", weather);
       })
+
       .catch((errorMessage) => setErrorMessage(errorMessage));
     getForecastWeather()
       .then((forecast) => {
         setForecastWeather(forecast);
+        console.log("forecast", forecast);
       })
       .catch((errorMessage) => setErrorMessage(errorMessage));
   }, []);
