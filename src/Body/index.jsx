@@ -43,6 +43,7 @@ function Body() {
       : {
           main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
           coord: forecastWeather?.city.coord,
+          weather: forecastWeather?.weather || forecastWeather?.list[0].weather,
         };
   return (
     <>
