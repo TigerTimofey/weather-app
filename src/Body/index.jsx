@@ -12,13 +12,12 @@ import Map from "./Map";
 
 function Body() {
   // console.log("api key", process.env);
+  const defaultTab = "current";
   const [showSideBar, setShowSideBar] = useState(false);
   const [currentWeather, setCurrentweather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  const [key, setKey] = useState("null");
-  const handleForecastOrCurrent = (k) => setKey(k);
+  const [selectedTab, setSelectedTab] = useState(defaultTab);
 
   const handleShow = () => setShowSideBar(true);
   // useEffect to make one time
@@ -36,7 +35,13 @@ function Body() {
   }, []);
   // console.log("current", currentWeather);
   // console.log("forecast", forecastWeather);
-
+  const mapProps =
+    selectedTab === defaultTab
+      ? currentWeather
+      : {
+          main: forecastWeather?.list[0].main,
+          coord: forecastWeather?.city.coord,
+        };
   return (
     <>
       <div className="my-2">
@@ -50,13 +55,13 @@ function Body() {
           <WeatherPeriods
             currentWeather={currentWeather}
             forecastWeather={forecastWeather}
-            keyFromIndex={key}
-            handleForecastOrCurrent={handleForecastOrCurrent}
+            setSelectedTab={setSelectedTab}
+            defaultTab={defaultTab}
           />
         </Col>
 
         <Col md={8}>
-          <Map {...currentWeather} />
+          <Map {...mapProps} />
         </Col>
       </Row>
 

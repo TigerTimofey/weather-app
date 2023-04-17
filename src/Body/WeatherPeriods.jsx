@@ -6,17 +6,15 @@ import ForecastSelect from "./ForecastSelect";
 function WeatherPeriods({
   currentWeather,
   forecastWeather,
-  handleForecastOrCurrent,
-  keyFromIndex,
+  setSelectedTab,
+  defaultTab,
 }) {
-  console.log("props", handleForecastOrCurrent);
-  console.log(keyFromIndex);
   return (
     <Tabs
-      defaultActiveKey="current"
+      defaultActiveKey={defaultTab}
       className="mb-3"
       justify
-      onSelect={handleForecastOrCurrent}
+      onSelect={(eventKey) => setSelectedTab(eventKey)}
     >
       <Tab eventKey="current" title="Current Weather">
         <Data {...currentWeather} />
