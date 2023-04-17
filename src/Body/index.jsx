@@ -18,6 +18,7 @@ function Body() {
   const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [selectedTab, setSelectedTab] = useState(defaultTab);
+  const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
   // useEffect to make one time
@@ -35,11 +36,12 @@ function Body() {
   }, []);
   // console.log("current", currentWeather);
   // console.log("forecast", forecastWeather);
+
   const mapProps =
     selectedTab === defaultTab
       ? currentWeather
       : {
-          main: forecastWeather?.list[0].main,
+          main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
           coord: forecastWeather?.city.coord,
         };
   return (
@@ -57,6 +59,8 @@ function Body() {
             forecastWeather={forecastWeather}
             setSelectedTab={setSelectedTab}
             defaultTab={defaultTab}
+            setForecastDateTimeSelect={setForecastDateTimeSelect}
+            forecastDateTimeSelect={forecastDateTimeSelect}
           />
         </Col>
 

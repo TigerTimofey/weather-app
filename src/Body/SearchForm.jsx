@@ -4,6 +4,7 @@ import {
   getForecastWeather,
 } from "../services/apiService";
 
+import { useState } from "react";
 import { FormGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -17,6 +18,30 @@ function SearchForm({
   setSelectedData,
   selectedData,
 }) {
+  const cities = [
+    {
+      name: "Tallinn",
+      lat: "59.4370",
+      lon: "24.7536",
+    },
+    {
+      name: "Tartu",
+      lat: "58.3780",
+      lon: "26.7284",
+    },
+    {
+      name: "Pärnu",
+      lat: "58.3858",
+      lon: "24.4965",
+    },
+    {
+      name: "Narva",
+      lat: "59.3799",
+      lon: "28.1912",
+    },
+  ];
+  const [selectedCityIndex, setSelectedCityIndex] = useState(0);
+
   const modes = ["xml", "html", "json"];
   const units = ["standard", "metric", "imperial"];
   const languages = [
@@ -50,13 +75,29 @@ function SearchForm({
 
   return (
     <Form onSubmit={handleSumbit}>
+      <FormGroup className="mb-3">
+        <Form.Label>Cities</Form.Label>
+        <Form.Select
+          aria-label="Default select example"
+          name="city"
+          onChange={(event) => setSelectedCityIndex(event.target.value)}
+        >
+          {cities.map(({ name }, index) => (
+            <option value={index} key={name}>
+              {name}
+            </option>
+          ))}
+        </Form.Select>
+      </FormGroup>
+
       <Form.Group className="mb-3">
         <Form.Label>Latitude</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter latitude"
           name="latitude"
-          defaultValue={defaultValue.lat}
+          value={cities[selectedCityIndex]?.lat}
+          readOnly
         />
         <Form.Text className="text-muted">Example: 59.4370</Form.Text>
       </Form.Group>
@@ -67,7 +108,8 @@ function SearchForm({
           type="text"
           placeholder="Enter longitude"
           name="longitude"
-          defaultValue={defaultValue.lon}
+          value={cities[selectedCityIndex]?.lon}
+          readOnly
         />
         <Form.Text className="text-muted">Example: 24.7536</Form.Text>
       </Form.Group>

@@ -9,7 +9,7 @@ function Header() {
       <Container>
         <Navbar.Brand href="#home">
           <img
-            src="https://react-bootstrap.netlify.app/logo.svg"
+            src="https://cdn.icon-icons.com/icons2/1603/PNG/512/weather-forcast-storm-rain-thunder-day_108615.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
