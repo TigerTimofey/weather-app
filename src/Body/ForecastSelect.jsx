@@ -4,7 +4,6 @@ import Data from "./Data";
 
 function ForecastSelect({ list, city }) {
   const [weather, setWeather] = useState(null);
-  console.log(list?.[0]);
 
   useEffect(() => {
     setWeather(list?.[0]);

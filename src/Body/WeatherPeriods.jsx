@@ -3,9 +3,21 @@ import Tabs from "react-bootstrap/Tabs";
 import Data from "./Data";
 import ForecastSelect from "./ForecastSelect";
 
-function WeatherPeriods({ currentWeather, forecastWeather }) {
+function WeatherPeriods({
+  currentWeather,
+  forecastWeather,
+  handleForecastOrCurrent,
+  keyFromIndex,
+}) {
+  console.log("props", handleForecastOrCurrent);
+  console.log(keyFromIndex);
   return (
-    <Tabs defaultActiveKey="current" className="mb-3" justify>
+    <Tabs
+      defaultActiveKey="current"
+      className="mb-3"
+      justify
+      onSelect={handleForecastOrCurrent}
+    >
       <Tab eventKey="current" title="Current Weather">
         <Data {...currentWeather} />
       </Tab>

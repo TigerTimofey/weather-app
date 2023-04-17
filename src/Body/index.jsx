@@ -17,24 +17,25 @@ function Body() {
   const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const [key, setKey] = useState("null");
+  const handleForecastOrCurrent = (k) => setKey(k);
+
   const handleShow = () => setShowSideBar(true);
   // useEffect to make one time
   useEffect(() => {
     getCurrentWeather()
       .then((weather) => {
         setCurrentweather(weather);
-        console.log("weather", weather);
       })
-
       .catch((errorMessage) => setErrorMessage(errorMessage));
     getForecastWeather()
       .then((forecast) => {
         setForecastWeather(forecast);
-        console.log("forecast", forecast);
       })
       .catch((errorMessage) => setErrorMessage(errorMessage));
   }, []);
-  // console.log(currentWeather);
+  // console.log("current", currentWeather);
+  // console.log("forecast", forecastWeather);
 
   return (
     <>
@@ -49,6 +50,8 @@ function Body() {
           <WeatherPeriods
             currentWeather={currentWeather}
             forecastWeather={forecastWeather}
+            keyFromIndex={key}
+            handleForecastOrCurrent={handleForecastOrCurrent}
           />
         </Col>
 
