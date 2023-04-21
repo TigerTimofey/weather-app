@@ -10,6 +10,7 @@ function Header() {
         <Navbar.Brand href="#home">
           <img
             src="https://cdn.icon-icons.com/icons2/1603/PNG/512/weather-forcast-storm-rain-thunder-day_108615.png"
+            // src="/logo.png"
             width="30"
             height="30"
             className="d-inline-block align-top"

@@ -36,6 +36,7 @@ function Body() {
   }, []);
   // console.log("current", currentWeather);
   // console.log("forecast", forecastWeather);
+  // console.log("forecast", forecastWeather.list[0]);
 
   const mapProps =
     selectedTab === defaultTab
