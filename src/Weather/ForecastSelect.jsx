@@ -1,10 +1,12 @@
 import Form from "react-bootstrap/Form";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function ForecastSelect({ list, setForecastDateTimeSelect }) {
+  const { listIndex } = useParams();
   useEffect(() => {
-    setForecastDateTimeSelect(list?.[0]);
-  }, [list, setForecastDateTimeSelect]);
+    setForecastDateTimeSelect(list?.[parseInt(listIndex) || 0]);
+  }, [list, setForecastDateTimeSelect, listIndex]);
 
   const handleChange = (event) => {
     const index = event.target.value;

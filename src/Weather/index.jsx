@@ -9,10 +9,14 @@ import WeatherPeriods from "./WeatherPeriods";
 import { getCurrentWeather, getForecastWeather } from "../services/apiService";
 import ErrorMadal from "../ErrorMadal";
 import Map from "./Map";
+import { useLocation } from "react-router-dom";
 
-function Body() {
+function Weather() {
+  const location = useLocation();
+  const defaultTab = location.pathname.includes("forecast")
+    ? "forecast"
+    : "current";
   // console.log("api key", process.env);
-  const defaultTab = "current";
   const [showSideBar, setShowSideBar] = useState(false);
   const [currentWeather, setCurrentweather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
@@ -35,7 +39,7 @@ function Body() {
       .catch((errorMessage) => setErrorMessage(errorMessage));
   }, []);
   // console.log("current", currentWeather);
-  // console.log("forecast", forecastWeather);
+  console.log("forecast", forecastWeather);
   // console.log("forecast", forecastWeather.list[0]);
 
   const mapProps =
@@ -84,4 +88,4 @@ function Body() {
     </>
   );
 }
-export default Body;
+export default Weather;

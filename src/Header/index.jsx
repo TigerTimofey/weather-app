@@ -2,12 +2,13 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <Navbar bg="white" variant="light" expand="sm">
       <Container>
-        <Navbar.Brand href="#home">
+        <Link to="/" className="navbar-brand">
           <img
             src="https://cdn.icon-icons.com/icons2/1603/PNG/512/weather-forcast-storm-rain-thunder-day_108615.png"
             // src="/logo.png"
@@ -17,11 +18,14 @@ function Header() {
             alt="React Bootstrap logo"
           />{" "}
           Weather App
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Link className="nav-link" to="/contact">
+              Contact
+            </Link>
+
             <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
