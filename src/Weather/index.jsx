@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -6,42 +6,28 @@ import Button from "react-bootstrap/Button";
 import "./Body.scss";
 import SideBar from "./Sidebar";
 import WeatherPeriods from "./WeatherPeriods";
-import { getCurrentWeather, getForecastWeather } from "../services/apiService";
 import ErrorMadal from "../ErrorMadal";
 import Map from "./Map";
 import { useLocation } from "react-router-dom";
 
-function Weather() {
+function Weather({
+  currentWeather,
+  forecastWeather,
+  errorMessage,
+  setCurrentweather,
+  setForecastWeather,
+  setErrorMessage,
+}) {
   const location = useLocation();
   const defaultTab = location.pathname.includes("forecast")
     ? "forecast"
     : "current";
   // console.log("api key", process.env);
   const [showSideBar, setShowSideBar] = useState(false);
-  const [currentWeather, setCurrentweather] = useState(null);
-  const [forecastWeather, setForecastWeather] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [selectedTab, setSelectedTab] = useState(defaultTab);
   const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
-  // useEffect to make one time
-  useEffect(() => {
-    getCurrentWeather()
-      .then((weather) => {
-        setCurrentweather(weather);
-      })
-      .catch((errorMessage) => setErrorMessage(errorMessage));
-    getForecastWeather()
-      .then((forecast) => {
-        setForecastWeather(forecast);
-      })
-      .catch((errorMessage) => setErrorMessage(errorMessage));
-  }, []);
-  // console.log("current", currentWeather);
-  console.log("forecast", forecastWeather);
-  // console.log("forecast", forecastWeather.list[0]);
-
   const mapProps =
     selectedTab === defaultTab
       ? currentWeather

@@ -5,13 +5,49 @@ import Container from "react-bootstrap/Container";
 import "./App.scss";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./Contact";
+import {
+  getCurrentWeather,
+  getForecastWeather,
+} from "./src/../services/apiService";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [currentWeather, setCurrentweather] = useState(null);
+  const [forecastWeather, setForecastWeather] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  useEffect(() => {
+    getCurrentWeather()
+      .then((weather) => {
+        setCurrentweather(weather);
+      })
+      .catch((errorMessage) => setErrorMessage(errorMessage));
+    getForecastWeather()
+      .then((forecast) => {
+        setForecastWeather(forecast);
+      })
+      .catch((errorMessage) => setErrorMessage(errorMessage));
+  }, []);
+  console.log("current", currentWeather);
+  console.log("forecast", forecastWeather);
   return (
     <Container>
       <Header />
       <Routes>
-        <Route path="/" element={<Weather />}></Route>
+        <Route
+          path="/"
+          element={
+            <Weather
+              currentWeather={currentWeather}
+              forecastWeather={forecastWeather}
+              errorMessage={errorMessage}
+              setCurrentweather={setCurrentweather}
+              setForecastWeather={setForecastWeather}
+              setErrorMessage={setErrorMessage}
+              getCurrentWeather={getCurrentWeather}
+              getForecastWeather={getForecastWeather}
+            />
+          }
+        ></Route>
         <Route path="/forecast/:listIndex" element={<Weather />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
