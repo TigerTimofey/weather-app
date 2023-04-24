@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <Navbar bg="white" variant="light" expand="sm">
-      <Container>
+      <Container className="header">
         <Link to="/" className="navbar-brand">
           <img
             src="https://cdn.icon-icons.com/icons2/1603/PNG/512/weather-forcast-storm-rain-thunder-day_108615.png"

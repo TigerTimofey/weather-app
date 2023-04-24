@@ -20,9 +20,10 @@ function ForecastSelect({ list, setForecastDateTimeSelect }) {
         <Form.Select
           aria-label="Default select example"
           onChange={handleChange}
+          value={listIndex}
         >
           {list?.map(({ dt_txt }, index) => (
-            <option value={index} key={index}>
+            <option value={index} active={listIndex} key={index}>
               {dt_txt}
             </option>
           ))}

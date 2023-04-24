@@ -19,12 +19,12 @@ function Weather({
   setErrorMessage,
 }) {
   const location = useLocation();
-  const defaultTab = location.pathname.includes("forecast")
-    ? "forecast"
-    : "current";
+  const defaultTab = "current";
   // console.log("api key", process.env);
   const [showSideBar, setShowSideBar] = useState(false);
-  const [selectedTab, setSelectedTab] = useState(defaultTab);
+  const [selectedTab, setSelectedTab] = useState(
+    location.pathname.includes("forecast") ? "forecast" : "current"
+  );
   const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
@@ -34,7 +34,7 @@ function Weather({
       : {
           main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
           coord: forecastWeather?.city.coord,
-          weather: forecastWeather?.weather || forecastWeather?.list[0].weather,
+          weather: forecastDateTimeSelect?.weather,
         };
   return (
     <>
@@ -50,7 +50,7 @@ function Weather({
             currentWeather={currentWeather}
             forecastWeather={forecastWeather}
             setSelectedTab={setSelectedTab}
-            defaultTab={defaultTab}
+            selectedTab={selectedTab}
             setForecastDateTimeSelect={setForecastDateTimeSelect}
             forecastDateTimeSelect={forecastDateTimeSelect}
           />
