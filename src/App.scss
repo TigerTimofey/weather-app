@@ -1,5 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 
-.header {
-  background-color: rgba(106, 224, 137, 0.335);
+.header-style:hover {
+  color: black;
+  border-radius: 30%;
+  transition: 0.7s;
+}
+.header-style {
+  transition: 0.9s;
+  color: grey;
+  font-size: 17px;
 }

@@ -17,6 +17,8 @@ function Weather({
   setCurrentweather,
   setForecastWeather,
   setErrorMessage,
+  forecastDateTimeSelect,
+  setForecastDateTimeSelect,
 }) {
   const location = useLocation();
   const defaultTab = "current";
@@ -25,7 +27,6 @@ function Weather({
   const [selectedTab, setSelectedTab] = useState(
     location.pathname.includes("forecast") ? "forecast" : "current"
   );
-  const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
   const mapProps =
@@ -39,7 +40,11 @@ function Weather({
   return (
     <>
       <div className="my-2">
-        <Button variant="info" onClick={handleShow} className="my-2">
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          className="my-2 text-white"
+        >
           Search
         </Button>
       </div>

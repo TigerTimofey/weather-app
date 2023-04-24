@@ -1,6 +1,5 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-// import { linkGenerator } from "../services/apiService";
 import { gererateFetchUrl } from "../services/apiService";
 
 function ExportForm() {
@@ -12,10 +11,8 @@ function ExportForm() {
     const url = gererateFetchUrl({
       mode,
     });
+    console.log("url", url);
     window.open(url);
-
-    // const link = await linkGenerator(event.target.mode.value);
-    // window.open(link);
   };
   return (
     <Form onSubmit={handleSubmit}>

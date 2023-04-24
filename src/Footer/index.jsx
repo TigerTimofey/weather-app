@@ -1,6 +1,8 @@
 function Footer() {
   return (
-    <div className="text-center fixed-bottom bg-white">@2023 Weather App</div>
+    <div className="footer text-center fixed-bottom bg-white">
+      @2023 Weather App
+    </div>
   );
   //test
 }
