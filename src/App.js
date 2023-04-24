@@ -29,26 +29,24 @@ function App() {
   }, []);
   console.log("current", currentWeather);
   console.log("forecast", forecastWeather);
+
+  const weatherProps = {
+    currentWeather,
+    forecastWeather,
+    setCurrentweather,
+    setForecastWeather,
+    errorMessage,
+  };
+
   return (
     <Container>
       <Header />
       <Routes>
+        <Route path="/" element={<Weather {...weatherProps} />}></Route>
         <Route
-          path="/"
-          element={
-            <Weather
-              currentWeather={currentWeather}
-              forecastWeather={forecastWeather}
-              errorMessage={errorMessage}
-              setCurrentweather={setCurrentweather}
-              setForecastWeather={setForecastWeather}
-              setErrorMessage={setErrorMessage}
-              getCurrentWeather={getCurrentWeather}
-              getForecastWeather={getForecastWeather}
-            />
-          }
+          path="/forecast/:listIndex"
+          element={<Weather {...weatherProps} />}
         ></Route>
-        <Route path="/forecast/:listIndex" element={<Weather />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
       <Footer />

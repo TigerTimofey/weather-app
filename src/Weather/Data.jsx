@@ -24,6 +24,5 @@ function Data({ main, name, weather }) {
     </Table>
   );
 }
-//ssss
 
 export default Data;
