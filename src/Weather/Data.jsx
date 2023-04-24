@@ -1,6 +1,10 @@
 import Table from "react-bootstrap/Table";
+import moment from "moment";
 
-function Data({ main, name, weather }) {
+function Data({ main, name, weather, dt }) {
+  const futureDate = moment.unix(dt);
+  const currentDate = moment();
+  const duration = moment.duration(futureDate.diff(currentDate));
   return (
     <Table striped bordered hover>
       <tbody>
@@ -19,6 +23,10 @@ function Data({ main, name, weather }) {
         <tr>
           <td>Description</td>
           <td>{weather?.length && weather[0].description}</td>
+        </tr>
+        <tr>
+          <td>Valid untill</td>
+          <td>{`Days: ${duration.days()} Hours: ${duration.hours()} Minutes: ${duration.minutes()}`}</td>
         </tr>
       </tbody>
     </Table>
