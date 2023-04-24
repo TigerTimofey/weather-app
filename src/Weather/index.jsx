@@ -33,6 +33,7 @@ function Weather({
     selectedTab === defaultTab
       ? currentWeather
       : {
+          name: forecastWeather?.city.name,
           main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
           coord: forecastWeather?.city.coord,
           weather: forecastDateTimeSelect?.weather,

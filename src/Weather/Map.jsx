@@ -1,12 +1,13 @@
 import React from "react";
 import { GoogleMap, useJsApiLoader, InfoWindow } from "@react-google-maps/api";
+import Badge from "react-bootstrap/Badge";
 
 const containerStyle = {
   width: "100%",
   height: "400px",
 };
 
-function Map({ coord, main, weather }) {
+function Map({ coord, main, weather, name }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
@@ -27,11 +28,13 @@ function Map({ coord, main, weather }) {
           lng: coord.lon,
         }}
       >
-        <>
-          {`${main?.temp} `}
-          <br />
-          {weather[0]?.description}
-        </>
+        <Badge bg="light">
+          <div className="text-center m-2 text-black ">
+            <h6>{`${name} `}</h6>
+            <h3>{`${Math.round(main?.temp)} `}</h3>
+            <h6>{weather[0]?.description}</h6>
+          </div>
+        </Badge>
       </InfoWindow>
     </GoogleMap>
   ) : (

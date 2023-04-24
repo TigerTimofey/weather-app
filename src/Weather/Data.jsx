@@ -9,23 +9,23 @@ function Data({ main, name, weather, dt }) {
     <Table striped bordered hover>
       <tbody>
         <tr>
-          <td>City</td>
+          <th>City</th>
           <td>{name}</td>
         </tr>
         <tr>
-          <td>Temp</td>
+          <th>Temp</th>
           <td>{main?.temp}</td>
         </tr>
         <tr>
-          <td>Feels like</td>
+          <th>Feels like</th>
           <td>{main?.feels_like}</td>
         </tr>
         <tr>
-          <td>Description</td>
+          <th>Description</th>
           <td>{weather?.length && weather[0].description}</td>
         </tr>
         <tr>
-          <td>Valid untill</td>
+          <th>Valid untill</th>
           <td>{`Days: ${duration.days()} Hours: ${duration.hours()} Minutes: ${duration.minutes()}`}</td>
         </tr>
       </tbody>

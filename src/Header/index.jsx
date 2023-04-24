@@ -31,7 +31,7 @@ function Header({ list, setForecastDateTimeSelect }) {
               className="d-inline-block align-top mt-1"
               alt="React Bootstrap logo"
             />{" "}
-            <Badge bg="success mt-2">Weather App</Badge>
+            <Badge bg="success mt-2">WEATHER APP</Badge>
           </h5>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

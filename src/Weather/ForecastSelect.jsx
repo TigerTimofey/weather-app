@@ -16,8 +16,10 @@ function ForecastSelect({ list, setForecastDateTimeSelect }) {
 
   return (
     <>
-      <Form.Group className="mb-3">
-        <Form.Label>Date & Time</Form.Label>
+      <Form.Group className="mb-3 text-center">
+        <h5>
+          <Form.Label>Date & Time</Form.Label>
+        </h5>
         <Form.Select
           aria-label="Default select example"
           onChange={handleChange}
