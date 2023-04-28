@@ -19,6 +19,7 @@ function Header({ list, setForecastDateTimeSelect }) {
     const index = event.target.value;
     setForecastDateTimeSelect(list[index]);
   };
+
   return (
     <Navbar bg="white" variant="light" expand="sm">
       <Container>
@@ -51,15 +52,19 @@ function Header({ list, setForecastDateTimeSelect }) {
             >
               <NavDropdown.Item
                 className="header-style"
-                href="#action/3.1"
+                href="forecast/:listIndex"
               ></NavDropdown.Item>
               <>
-                <Form.Group className="m-2 pb-3  text-center">
-                  <Form.Label>Forecast for 5 days</Form.Label>
+                <Form.Label className="m-2  text-center">
+                  Forecast for 5 days
+                </Form.Label>
+                <Link to={`/forecast/${listIndex}`}>
                   <Form.Select
                     aria-label="Default select example"
                     onChange={handleChange}
+                    onClick={handleChange}
                     value={listIndex}
+                    className="p-3"
                   >
                     {list?.map(({ dt }, index) => (
                       <option value={index} active={listIndex} key={index}>
@@ -67,7 +72,7 @@ function Header({ list, setForecastDateTimeSelect }) {
                       </option>
                     ))}
                   </Form.Select>
-                </Form.Group>
+                </Link>
               </>
             </NavDropdown>
           </Nav>

@@ -29,10 +29,10 @@ function Map({ coord, main, weather, name }) {
         }}
       >
         <Badge bg="light">
-          <div className="text-center m-2 text-black ">
+          <div className="text-center m-2 text-black">
             <h6>{`${name} `}</h6>
-            <h3>{`${Math.round(main?.temp)} `}</h3>
-            <h6>{weather[0]?.description}</h6>
+            <h4>{`${Math.round(main?.temp)} °C `}</h4>
+            <h6>{weather[0]?.description.toUpperCase()}</h6>
           </div>
         </Badge>
       </InfoWindow>

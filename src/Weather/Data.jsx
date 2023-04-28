@@ -9,7 +9,7 @@ function Data({ main, name, weather, dt }) {
     <Table striped bordered hover>
       <tbody>
         <tr>
-          <th>City</th>
+          <th>{name}</th>
           <td>{name}</td>
         </tr>
         <tr>

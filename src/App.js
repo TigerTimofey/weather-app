@@ -17,7 +17,6 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
-
   useEffect(() => {
     getCurrentWeather()
       .then((weather) => {
@@ -46,6 +45,7 @@ function App() {
   return (
     <Container>
       <Header {...weatherProps} {...forecastWeather} />
+
       <Routes>
         <Route path="/" element={<Weather {...weatherProps} />}></Route>
         <Route
