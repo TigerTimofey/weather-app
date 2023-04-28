@@ -4,22 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
-import Form from "react-bootstrap/Form";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import moment from "moment";
 
-function Header({ list, setForecastDateTimeSelect }) {
-  const { listIndex } = useParams();
-  useEffect(() => {
-    setForecastDateTimeSelect(list?.[parseInt(listIndex) || 0]);
-  }, [list, setForecastDateTimeSelect, listIndex]);
-
-  const handleChange = (event) => {
-    const index = event.target.value;
-    setForecastDateTimeSelect(list[index]);
-  };
-
+function Header({ list }) {
   return (
     <Navbar bg="white" variant="light" expand="sm">
       <Container>
@@ -45,35 +32,18 @@ function Header({ list, setForecastDateTimeSelect }) {
             <Nav.Link className="header-style" href="#link">
               Link
             </Nav.Link>
-            <NavDropdown
-              title="Forecast plan"
-              id="basic-nav-dropdown"
-              className="header-style"
-            >
-              <NavDropdown.Item
-                className="header-style"
-                href="forecast/:listIndex"
-              ></NavDropdown.Item>
-              <>
-                <Form.Label className="m-2  text-center">
-                  Forecast for 5 days
-                </Form.Label>
-                <Link to={`/forecast/${listIndex}`}>
-                  <Form.Select
-                    aria-label="Default select example"
-                    onChange={handleChange}
-                    onClick={handleChange}
-                    value={listIndex}
-                    className="p-3"
-                  >
-                    {list?.map(({ dt }, index) => (
-                      <option value={index} active={listIndex} key={index}>
-                        {moment.unix(dt).format("DD.MM HH:mm")}
-                      </option>
-                    ))}
-                  </Form.Select>
+            <NavDropdown title="Forecast plan" id="basic-nav-dropdown">
+              {list?.map(({ dt }, index) => (
+                <Link
+                  to={`/forecast/${index}`}
+                  className="dropdown-item"
+                  key={index}
+                  data-rr-ui-dropdown-item
+                >
+                  {" "}
+                  {moment.unix(dt).format("DD.MM HH:mm")}
                 </Link>
-              </>
+              ))}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

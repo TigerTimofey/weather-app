@@ -22,7 +22,6 @@ function Weather({
 }) {
   const location = useLocation();
   const defaultTab = "current";
-  // console.log("api key", process.env);
   const [showSideBar, setShowSideBar] = useState(false);
   const [selectedTab, setSelectedTab] = useState(
     location.pathname.includes("forecast") ? "forecast" : "current"
