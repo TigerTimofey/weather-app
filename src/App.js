@@ -5,10 +5,7 @@ import Container from "react-bootstrap/Container";
 import "./App.scss";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./Contact";
-import {
-  getCurrentWeather,
-  getForecastWeather,
-} from "./src/../services/apiService";
+import { getCurrentWeather, getForecastWeather } from "./services/apiService";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -16,19 +13,20 @@ function App() {
   const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
   useEffect(() => {
-    getCurrentWeather()
-      .then((weather) => {
+    (async () => {
+      try {
+        const weather = await getCurrentWeather();
+        const forecast = await getForecastWeather();
+
         setCurrentweather(weather);
-      })
-      .catch((errorMessage) => setErrorMessage(errorMessage));
-    getForecastWeather()
-      .then((forecast) => {
         setForecastWeather(forecast);
-      })
-      .catch((errorMessage) => setErrorMessage(errorMessage));
+      } catch (errorMessage) {
+        setErrorMessage(errorMessage);
+      }
+    })();
   }, []);
+
   console.log("current", currentWeather);
   console.log("forecast", forecastWeather);
 
@@ -38,8 +36,6 @@ function App() {
     setCurrentweather,
     setForecastWeather,
     errorMessage,
-    setForecastDateTimeSelect,
-    forecastDateTimeSelect,
   };
 
   return (

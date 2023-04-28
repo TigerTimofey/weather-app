@@ -2,16 +2,21 @@ import Form from "react-bootstrap/Form";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
+import { setForecastDateTimeSelect } from "../services/stateService";
+import { useDispatch } from "react-redux";
 
-function ForecastSelect({ list, setForecastDateTimeSelect }) {
+function ForecastSelect({ list }) {
   const { listIndex } = useParams();
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    setForecastDateTimeSelect(list?.[parseInt(listIndex) || 0]);
-  }, [list, setForecastDateTimeSelect, listIndex]);
+    list?.length &&
+      dispatch(setForecastDateTimeSelect(list?.[parseInt(listIndex) || 0]));
+  }, [list, listIndex, dispatch]);
 
   const handleChange = (event) => {
     const index = event.target.value;
-    setForecastDateTimeSelect(list[index]);
+    dispatch(setForecastDateTimeSelect(list[index]));
   };
 
   return (

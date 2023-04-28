@@ -9,6 +9,8 @@ import WeatherPeriods from "./WeatherPeriods";
 import ErrorMadal from "../ErrorMadal";
 import Map from "./Map";
 import { useLocation } from "react-router-dom";
+import { setShowSideBar } from "../services/stateService";
+import { useDispatch } from "react-redux";
 
 function Weather({
   currentWeather,
@@ -17,26 +19,17 @@ function Weather({
   setCurrentweather,
   setForecastWeather,
   setErrorMessage,
-  forecastDateTimeSelect,
   setForecastDateTimeSelect,
 }) {
   const location = useLocation();
+  const dispatch = useDispatch();
   const defaultTab = "current";
-  const [showSideBar, setShowSideBar] = useState(false);
+
   const [selectedTab, setSelectedTab] = useState(
     location.pathname.includes("forecast") ? "forecast" : "current"
   );
+  const handleShow = () => dispatch(setShowSideBar(true));
 
-  const handleShow = () => setShowSideBar(true);
-  const mapProps =
-    selectedTab === defaultTab
-      ? currentWeather
-      : {
-          name: forecastWeather?.city.name,
-          main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
-          coord: forecastWeather?.city.coord,
-          weather: forecastDateTimeSelect?.weather,
-        };
   return (
     <>
       <div className="my-2">
@@ -56,21 +49,23 @@ function Weather({
             forecastWeather={forecastWeather}
             setSelectedTab={setSelectedTab}
             selectedTab={selectedTab}
-            setForecastDateTimeSelect={setForecastDateTimeSelect}
-            forecastDateTimeSelect={forecastDateTimeSelect}
           />
         </Col>
 
         <Col md={8}>
-          <Map {...mapProps} />
+          <Map
+            selectedTab={selectedTab}
+            defaultTab={defaultTab}
+            currentWeather={currentWeather}
+            forecastWeather={forecastWeather}
+          />
         </Col>
       </Row>
 
       <SideBar
         setCurrentweather={setCurrentweather}
         setForecastWeather={setForecastWeather}
-        show={showSideBar}
-        handleClose={() => setShowSideBar(false)}
+        handleClose={() => dispatch(setShowSideBar(false))}
       />
       <ErrorMadal
         handleCloseModal={() => setErrorMessage(null)}
