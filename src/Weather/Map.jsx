@@ -50,7 +50,7 @@ function Map({
       >
         <Badge bg="light">
           <div className="text-center m-2 text-black">
-            <h6>{`${name} `}</h6>
+            <h6>{`${mapProps?.name}`}</h6>
             <h4>{`${Math.round(mapProps?.main?.temp)} °C `}</h4>
             <h6>{mapProps?.weather[0]?.description.toUpperCase()}</h6>
           </div>

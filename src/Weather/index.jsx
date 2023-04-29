@@ -19,7 +19,6 @@ function Weather({
   setCurrentweather,
   setForecastWeather,
   setErrorMessage,
-  setForecastDateTimeSelect,
 }) {
   const location = useLocation();
   const dispatch = useDispatch();

@@ -28,7 +28,7 @@ function Data({ main, name, weather, dt, selectedTab }) {
         </tr>
         <tr>
           <th>Description</th>
-          <td>{data?.weather?.length && weather[0].description}</td>
+          <td>{data?.weather?.length && data?.weather[0].description}</td>
         </tr>
         <tr>
           <th>Valid untill</th>
