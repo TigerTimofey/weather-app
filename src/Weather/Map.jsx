@@ -8,13 +8,9 @@ const containerStyle = {
   height: "400px",
 };
 
-function Map({
-  name,
-  defaultTab,
-  selectedTab,
-  currentWeather,
-  forecastWeather,
-}) {
+function Map({ defaultTab, selectedTab }) {
+  const currentWeather = useSelector((state) => state.currentWeather);
+  const forecastWeather = useSelector((state) => state.forecastWeather);
   const forecastDateTimeSelect = useSelector(
     (state) => state.forecastDateTimeSelect
   );

@@ -2,13 +2,11 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Data from "./Data";
 import ForecastSelect from "./ForecastSelect";
+import { useSelector } from "react-redux";
 
-function WeatherPeriods({
-  currentWeather,
-  forecastWeather,
-  setSelectedTab,
-  selectedTab,
-}) {
+function WeatherPeriods({ setSelectedTab, selectedTab }) {
+  const currentWeather = useSelector((state) => state.currentWeather);
+  const forecastWeather = useSelector((state) => state.forecastWeather);
   console.log(currentWeather);
   return (
     <Tabs

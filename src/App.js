@@ -7,11 +7,15 @@ import { Route, Routes } from "react-router-dom";
 import Contact from "./Contact";
 import { getCurrentWeather, getForecastWeather } from "./services/apiService";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentweather, setForecastWeather } from "./services/stateService";
 
 function App() {
-  const [currentWeather, setCurrentweather] = useState(null);
-  const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const dispatch = useDispatch();
+  const currentWeather = useSelector((state) => state.currentWeather);
+  const forecastWeather = useSelector((state) => state.forecastWeather);
 
   useEffect(() => {
     (async () => {
@@ -19,13 +23,13 @@ function App() {
         const weather = await getCurrentWeather();
         const forecast = await getForecastWeather();
 
-        setCurrentweather(weather);
-        setForecastWeather(forecast);
+        dispatch(setCurrentweather(weather));
+        dispatch(setForecastWeather(forecast));
       } catch (errorMessage) {
         setErrorMessage(errorMessage);
       }
     })();
-  }, []);
+  }, [dispatch]);
 
   console.log("current", currentWeather);
   console.log("forecast", forecastWeather);

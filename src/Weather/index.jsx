@@ -12,14 +12,7 @@ import { useLocation } from "react-router-dom";
 import { setShowSideBar } from "../services/stateService";
 import { useDispatch } from "react-redux";
 
-function Weather({
-  currentWeather,
-  forecastWeather,
-  errorMessage,
-  setCurrentweather,
-  setForecastWeather,
-  setErrorMessage,
-}) {
+function Weather({ errorMessage, setErrorMessage }) {
   const location = useLocation();
   const dispatch = useDispatch();
   const defaultTab = "current";
@@ -44,28 +37,17 @@ function Weather({
       <Row>
         <Col md={4}>
           <WeatherPeriods
-            currentWeather={currentWeather}
-            forecastWeather={forecastWeather}
             setSelectedTab={setSelectedTab}
             selectedTab={selectedTab}
           />
         </Col>
 
         <Col md={8}>
-          <Map
-            selectedTab={selectedTab}
-            defaultTab={defaultTab}
-            currentWeather={currentWeather}
-            forecastWeather={forecastWeather}
-          />
+          <Map selectedTab={selectedTab} defaultTab={defaultTab} />
         </Col>
       </Row>
 
-      <SideBar
-        setCurrentweather={setCurrentweather}
-        setForecastWeather={setForecastWeather}
-        handleClose={() => dispatch(setShowSideBar(false))}
-      />
+      <SideBar handleClose={() => dispatch(setShowSideBar(false))} />
       <ErrorMadal
         handleCloseModal={() => setErrorMessage(null)}
         message={errorMessage}

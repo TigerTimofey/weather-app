@@ -10,14 +10,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-function SearchForm({
+import {
   setCurrentweather,
   setForecastWeather,
-  closeSidebar,
-  setSelectedData,
-  selectedData,
-}) {
+} from "../services/stateService";
+import { useDispatch } from "react-redux";
+
+function SearchForm({ closeSidebar, setSelectedData, selectedData }) {
+  const dispatch = useDispatch();
+
   const cities = [
     {
       name: "Tallinn",
@@ -66,8 +67,8 @@ function SearchForm({
 
     const forecastWeather = await getForecastWeather(params);
     const currentWeather = await getCurrentWeather(params);
-    setCurrentweather(currentWeather);
-    setForecastWeather(forecastWeather);
+    dispatch(setCurrentweather(currentWeather));
+    dispatch(setForecastWeather(forecastWeather));
     setSelectedData(params);
     closeSidebar();
   };
