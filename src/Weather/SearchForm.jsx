@@ -1,20 +1,19 @@
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { useState } from "react";
+import { FormGroup } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import {
   getCurrentWeather,
   defaultParams,
   getForecastWeather,
 } from "../services/apiService";
-
-import { useState } from "react";
-import { FormGroup } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import {
   setCurrentweather,
   setForecastWeather,
 } from "../services/stateService";
-import { useDispatch } from "react-redux";
 
 function SearchForm({ closeSidebar, setSelectedData, selectedData }) {
   const dispatch = useDispatch();

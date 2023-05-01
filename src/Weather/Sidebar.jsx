@@ -1,7 +1,7 @@
-import Offcanvas from "react-bootstrap/Offcanvas";
-import SearchForm from "./SearchForm";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import SearchForm from "./SearchForm";
 import ExportForm from "./ExportForm";
 
 function SideBar({ handleClose }) {

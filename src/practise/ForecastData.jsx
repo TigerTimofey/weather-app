@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 function ForecastData(props) {
   const onChangeForecast = (event) => {
     event.preventDefault();
-    console.log(props.list[event.target.value]);
     return props.list[event.target.value];
   };
 

@@ -21,11 +21,11 @@ function Data({ main, name, weather, dt, selectedTab }) {
         </tr>
         <tr>
           <th>Temp</th>
-          <td>{data?.main?.temp}</td>
+          <td>{`${Math.round(data?.main?.temp)}`}</td>
         </tr>
         <tr>
           <th>Feels like</th>
-          <td>{data?.main?.feels_like}</td>
+          <td>{`${Math.round(data?.main?.feels_like)}`}</td>
         </tr>
         <tr>
           <th>Description</th>

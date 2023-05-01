@@ -1,25 +1,29 @@
 import { useState } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-
-import "./Body.scss";
-import SideBar from "./Sidebar";
-import WeatherPeriods from "./WeatherPeriods";
-import ErrorMadal from "../ErrorMadal";
-import Map from "./Map";
 import { useLocation } from "react-router-dom";
 import { setShowSideBar } from "../services/stateService";
 import { useDispatch } from "react-redux";
 
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
+import SideBar from "./Sidebar";
+import WeatherPeriods from "./WeatherPeriods";
+import ErrorMadal from "../ErrorMadal";
+import Map from "./Map";
+
+import "./Body.scss";
+
 function Weather({ errorMessage, setErrorMessage }) {
   const location = useLocation();
   const dispatch = useDispatch();
-  const defaultTab = "current";
 
   const [selectedTab, setSelectedTab] = useState(
     location.pathname.includes("forecast") ? "forecast" : "current"
   );
+
+  const defaultTab = "current";
+
   const handleShow = () => dispatch(setShowSideBar(true));
 
   return (

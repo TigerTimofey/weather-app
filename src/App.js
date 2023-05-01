@@ -1,14 +1,15 @@
+import { getCurrentWeather, getForecastWeather } from "./services/apiService";
+import { setCurrentweather, setForecastWeather } from "./services/stateService";
+import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import Container from "react-bootstrap/Container";
 import Header from "./Header";
 import Weather from "./Weather";
 import Footer from "./Footer";
-import Container from "react-bootstrap/Container";
-import "./App.scss";
-import { Route, Routes } from "react-router-dom";
 import Contact from "./Contact";
-import { getCurrentWeather, getForecastWeather } from "./services/apiService";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setCurrentweather, setForecastWeather } from "./services/stateService";
+import "./App.scss";
 
 function App() {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -42,12 +43,15 @@ function App() {
     <Container>
       <Header {...forecastWeather} />
       <Routes>
-        <Route path="/" element={<Weather {...weatherProps} />}></Route>
         <Route
-          path="/forecast/:listIndex"
+          path="/weather-app/"
           element={<Weather {...weatherProps} />}
         ></Route>
-        <Route path="/contact" element={<Contact />}></Route>
+        <Route
+          path="/weather-app/forecast/:listIndex"
+          element={<Weather {...weatherProps} />}
+        ></Route>
+        <Route path="/weather-app/contact" element={<Contact />}></Route>
       </Routes>
       <Footer />
     </Container>

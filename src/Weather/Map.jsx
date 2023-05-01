@@ -1,7 +1,7 @@
-import React from "react";
 import { GoogleMap, useJsApiLoader, InfoWindow } from "@react-google-maps/api";
-import Badge from "react-bootstrap/Badge";
 import { useSelector } from "react-redux";
+import React from "react";
+import Badge from "react-bootstrap/Badge";
 
 const containerStyle = {
   width: "100%",
@@ -44,7 +44,7 @@ function Map({ defaultTab, selectedTab }) {
           lng: mapProps?.coord.lon,
         }}
       >
-        <Badge bg="light">
+        <Badge bg="white">
           <div className="text-center m-2 text-black">
             <h6>{`${mapProps?.name}`}</h6>
             <h4>{`${Math.round(mapProps?.main?.temp)} °C `}</h4>
