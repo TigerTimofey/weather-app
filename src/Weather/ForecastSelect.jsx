@@ -7,6 +7,10 @@ import { useDispatch } from "react-redux";
 import { FORECAST_DATE_FORMAT } from "../constants";
 
 function ForecastSelect({ list }) {
+  //useParams это Реакт-раутер-дом ХООК, который следит за парамаетрами переденными в url.
+  //В раутере мы назначили параметр через ":". Все что мы передадим в url вместо названия этого параметра, Реакт-раутер-дом подставит это значениев обьект, который useParams сможет прочитать
+  //При изменнии этого параметра useParams заново отрисует компонент.
+
   const { listIndex } = useParams();
   const dispatch = useDispatch();
 
