@@ -11,7 +11,6 @@ function ExportForm() {
     const url = gererateFetchUrl({
       mode,
     });
-    console.log("url", url);
     window.open(url);
   };
   return (

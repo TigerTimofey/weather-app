@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 function WeatherPeriods({ setSelectedTab, selectedTab }) {
   const currentWeather = useSelector((state) => state.currentWeather);
   const forecastWeather = useSelector((state) => state.forecastWeather);
-  console.log(currentWeather);
   return (
     <Tabs
       defaultActiveKey={selectedTab}

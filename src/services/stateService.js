@@ -16,7 +16,6 @@ export const setForecastWeather = createAction("setForecastWeather");
 
 const reducer = createReducer(initialState, {
   [setShowSideBar]: (state, action) => {
-    console.log("Action", action);
     state.showSideBar = action.payload;
   },
   [setForecastDateTimeSelect]: (state, action) => {

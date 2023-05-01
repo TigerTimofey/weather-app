@@ -31,9 +31,6 @@ function App() {
     })();
   }, [dispatch]);
 
-  console.log("current", currentWeather);
-  console.log("forecast", forecastWeather);
-
   const weatherProps = {
     currentWeather,
     forecastWeather,
@@ -41,7 +38,6 @@ function App() {
     setForecastWeather,
     errorMessage,
   };
-
   return (
     <Container>
       <Header {...forecastWeather} />

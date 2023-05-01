@@ -11,6 +11,7 @@ function Data({ main, name, weather, dt, selectedTab }) {
   const futureDate = moment.unix(data?.dt);
   const currentDate = moment();
   const duration = moment.duration(futureDate.diff(currentDate));
+
   return (
     <Table striped bordered hover>
       <tbody>
