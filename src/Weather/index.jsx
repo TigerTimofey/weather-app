@@ -15,7 +15,11 @@ import Map from "./Map";
 import "./Body.scss";
 
 function Weather({ errorMessage, setErrorMessage }) {
+  //useLocation -  это Реакт ХООК для определения url в котором мы находимся. При изменение url useLocation если он остается на том же компоненте, то он заставляет компонент отрисоваться/ render.
+  //ч
   const location = useLocation();
+  //useDispatch - это Реакт ХООК и он передает функцию? которая общается с Редуксом.
+  //dispatch тригирит Редукс и принимает в себя триггер состояния, то есть action.
   const dispatch = useDispatch();
 
   const [selectedTab, setSelectedTab] = useState(

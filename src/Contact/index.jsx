@@ -1,4 +1,10 @@
+import ContactAlert from "./ContactAlert";
+
 function Contact() {
-  return <>Contact</>;
+  return (
+    <>
+      <ContactAlert />
+    </>
+  );
 }
 export default Contact;

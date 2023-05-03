@@ -10,6 +10,7 @@ export const defaultParams = {
   units: "metric",
 };
 
+// Тут мы генерируем(создаем) из обьекта в url string.  - Иными словами мы создаем правильный синтаксис для запроса и возвращаем строку.
 export const gererateFetchUrl = (params, endPoint = "weather") => {
   const searchParams = new URLSearchParams({
     appid: apiKey,
@@ -21,6 +22,12 @@ export const gererateFetchUrl = (params, endPoint = "weather") => {
 
 export const getCurrentWeather = async (params) => {
   const link = gererateFetchUrl(params);
+
+  //fetch - это функция JS, котоая делает запрос  на данный ему ссылку url. В нашем случае мы передаем fetch(link), с которого нужно стянуть данные.
+  //fetch заходит на данный ему url/link и parse все что ему выдадаут. В нашем случае ему передают JSON с данными о погоде.
+  //fetch собираем это все в response object. Response object - это тип обьекта с уже готовыми методами для обработки данных, но поскольку запрос и обработка занимает время,
+  //то fetch оборачивает Response object в Promise object.
+  //Потом мы await и работаем.
   const response = await fetch(link);
   if (!response.ok) {
     const errorMessage = `Current Weather Error ${response.status}:${response.statusText}`;

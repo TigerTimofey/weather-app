@@ -3,6 +3,8 @@ import moment from "moment";
 import { useSelector } from "react-redux";
 
 function Data({ main, name, weather, dt, selectedTab }) {
+  //useSelector общается с Реукс и слушает изменения состояние. Что слушать мы передаем через функцию, которой мы тянем состояние и возвращаем необходимое состояние.
+  //useSelector рабоает так же как useState при изменении запускает render данного компонента.
   const forecastDateTimeSelect = useSelector(
     (state) => state.forecastDateTimeSelect
   );
