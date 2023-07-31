@@ -30,7 +30,7 @@ function TableContact() {
               target="_blank"
               size="sm"
             >
-              Click to send email
+              @emailMe
             </Button>
           </td>
           <td className="text-center">
