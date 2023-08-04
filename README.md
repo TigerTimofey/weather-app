@@ -2,7 +2,7 @@
 
 ## `About project`
 
-When you visit our website, you will find the weather forecast for various cities in Estonia, including Tallinn, Tartu, and Pärnu. Our website provides you with up-to-date weather information, ensuring that you are well-informed about the current weather conditions in these beautiful Estonian cities.
+When you visit our website, you will find the weather forecast for various cities in Estonia, including Tallinn, Tartu, Narva and Pärnu. Our website provides you with up-to-date weather information, ensuring that you are well-informed about the current weather conditions in these beautiful Estonian cities. In addition, you see the current weather at the moment, as well as a Google map, which shows the selected city.
 
 Upon arriving at our website, you will encounter a pre-filled search query displaying the current weather data for the selected cities. This feature is designed to provide you with immediate access to the latest weather updates.
 
