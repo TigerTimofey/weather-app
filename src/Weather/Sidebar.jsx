@@ -11,7 +11,9 @@ function SideBar({ handleClose }) {
   return (
     <Offcanvas show={show} onHide={handleClose}>
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Search Weather</Offcanvas.Title>
+        <Offcanvas.Title className="navbar-text ">
+          Search Weather
+        </Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
         <SearchForm

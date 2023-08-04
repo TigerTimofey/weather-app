@@ -32,13 +32,13 @@ function Weather({ errorMessage, setErrorMessage }) {
 
   return (
     <>
-      <div className="my-3 w-100 d-flex justify-content-center align-items-center container-center">
+      <div className="my-3 d-flex justify-content-center align-items-center container-center">
         <Button
-          variant="primary"
+          variant="success"
           onClick={handleShow}
-          className="my-2 text-white "
+          className="my-2 text-white w-100 navbar-text "
         >
-          Search
+          <h4>Search</h4>
         </Button>
       </div>
 

@@ -173,7 +173,7 @@ function SearchForm({ closeSidebar, setSelectedData, selectedData }) {
       </FormGroup>
 
       <div className="d-grid">
-        <Button variant="primary" type="submit">
+        <Button variant="success" type="submit">
           {" "}
           Search{" "}
         </Button>{" "}

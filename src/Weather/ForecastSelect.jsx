@@ -23,9 +23,10 @@ function ForecastSelect({ list }) {
   return (
     <>
       <Form.Group className="mb-3 text-center">
-        <h5>
-          <Form.Label>Date & Time</Form.Label>
-        </h5>
+        <Form.Label>
+          <h5>Date & Time</h5>
+        </Form.Label>
+
         <Form.Select
           aria-label="Default select example"
           onChange={handleChange}

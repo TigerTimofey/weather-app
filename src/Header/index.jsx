@@ -9,27 +9,27 @@ import { FORECAST_DATE_FORMAT } from "../constants";
 
 function Header({ list }) {
   return (
-    <Container
-      centered
-      className="d-flex justify-content-center align-items-center container-center"
-    >
+    <Container className="navbar-text d-flex justify-content-center align-items-center container-center">
       <Navbar bg="white" variant="light" expand="sm">
         <Container>
           <Link to="/weather-app/" className="navbar-brand text-white">
-            <h5>
-              <img
-                src="/weather-app/logo.png"
-                width="30"
-                height="30"
-                className="d-inline-block align-top mt-1"
-                alt="React Bootstrap logo"
-              />{" "}
-              <Badge bg="success mt-2">WEATHER APP</Badge>
-            </h5>
+            <h1>
+              <Badge bg="success mt-2 ">
+                WEATHER APP{" "}
+                <img
+                  src="/weather-app/logo.png"
+                  width="30"
+                  height="30"
+                  className="d-inline-block align-top mt-0"
+                  alt="React Bootstrap logo"
+                />
+              </Badge>
+            </h1>
           </Link>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className=" mt-2 ">
               <Link className="nav-link header-style" to="/weather-app/contact">
                 Contact
               </Link>
