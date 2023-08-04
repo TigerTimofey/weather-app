@@ -12,22 +12,26 @@ function Header({ list }) {
     <Container className="navbar-text d-flex justify-content-center align-items-center container-center">
       <Navbar bg="white" variant="light" expand="sm">
         <Container>
-          <Link to="/weather-app/" className="navbar-brand text-white">
-            <h1>
-              <Badge bg="success mt-2 ">
-                WEATHER APP{" "}
-                <img
-                  src="/weather-app/logo.png"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top mt-0"
-                  alt="React Bootstrap logo"
-                />
-              </Badge>
-            </h1>
+          <Link to="/weather-app/" className="navbar-brand text-white ">
+            <Container className="ms-4">
+              <h1>
+                <Badge bg="success mt-2 ">
+                  WEATHER APP{" "}
+                  <img
+                    src="/weather-app/logo.png"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top mt-0"
+                    alt="React Bootstrap logo"
+                  />
+                </Badge>
+              </h1>
+            </Container>
           </Link>
+          <Container>
+            <Navbar.Toggle className="w-100" aria-controls="basic-navbar-nav" />
+          </Container>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className=" mt-2 ">
               <Link className="nav-link header-style" to="/weather-app/contact">
