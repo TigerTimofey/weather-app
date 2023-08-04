@@ -37,6 +37,7 @@ function Weather({ errorMessage, setErrorMessage }) {
           variant="success"
           onClick={handleShow}
           className="my-2 text-white w-100 navbar-text "
+          style={{ opacity: "90%" }}
         >
           <h4>Search</h4>
         </Button>
